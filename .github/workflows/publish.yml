@@ -1,0 +1,31 @@
+name: publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+
+    steps:
+    - name: clone
+      uses: actions/checkout@v2
+
+    - name: setup
+      uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+
+    - name: gradlew
+      run: gradle wrapper
+
+    - name: build
+      run: ./gradlew build
+
+    - name: publish
+      run: ./gradlew publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
