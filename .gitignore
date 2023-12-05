@@ -1,0 +1,15 @@
+# https://github.com/dkorolev/kt-devenv
+# To comfortably work on the code in this repo without Java installed on the very machine.
+devenv.sh
+.devenv_docker_container_id
+.bash_history
+
+# Kotlin stuff
+.gradle
+gradle*
+
+build
+.build
+
+kotlin
+.kotlin
