@@ -1,0 +1,26 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: clone
+      uses: actions/checkout@v2
+
+    - name: setup
+      uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+
+    - name: gradlew
+      run: gradle wrapper
+
+    - name: build
+      run: ./gradlew build
+
+    - name: test
+      run: ./gradlew test
